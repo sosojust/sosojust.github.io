@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<select id="s1">
+    <option value='-1'>请选择</option>
+</select>
+<select id="s2">
+    <option value='-1'>请选择</option>
+</select>
+<select id="s3">
+    <option value='-1'>请选择</option>
+</select>
+<select id="s4">
+    <option value='-1'>请选择</option>
+</select>
+<select id="s5">
+    <option value='-1'>请选择</option>
+</select>
+<select id="s6">
+    <option value='-1'>请选择</option>
+</select>
+<select id="s7">
+    <option value='-1'>请选择</option>
+</select>
+</body>
+</html>
+<script src="//cdn.bootcss.com/jquery/2.1.1/jquery.js"></script>
+<script type="text/javascript">
+    var insurance_type_source = [
+        {"id":1, "title":"人身保险", "pid": 0, "code":"1000000", "level":1},
+        {"id":2, "title":"财产险", "pid": 0, "code":"2000000", "level":1},
+
+        {"id":3, "title":"人寿保险", "pid": 1, "code":"1100000", "level":2},
+        {"id":4, "title":"年金保险", "pid": 1, "code":"1200000", "level":2},
+        {"id":5, "title":"健康保险", "pid": 1, "code":"1300000", "level":2},
+        {"id":6, "title":"意外伤害保险", "pid": 1, "code":"1400000", "level":2},
+
+        {"id":7, "title":"车险", "pid": 2, "code":"2100000", "level":2},
+        {"id":8, "title":"家庭财产险", "pid": 2, "code":"2200000", "level":2},
+        {"id":9, "title":"企业财产险", "pid": 2, "code":"2300000", "level":2},
+        {"id":10, "title":"工程保险", "pid": 2, "code":"2400000", "level":2},
+        {"id":11, "title":"船舶保险", "pid": 2, "code":"2500000", "level":2},
+        {"id":12, "title":"农业保险", "pid": 2, "code":"2600000", "level":2},
+        {"id":13, "title":"货物运输保险", "pid": 2, "code":"2700000", "level":2},
+        {"id":14, "title":"责任保险", "pid": 2, "code":"2800000", "level":2},
+        {"id":15, "title":"信用保险", "pid": 2, "code":"2900000", "level":2},
+        {"id":16, "title":"保证保险", "pid": 2, "code":"2A00000", "level":2},
+        {"id":17, "title":"综合保险", "pid": 2, "code":"2B00000", "level":2},
+        {"id":18, "title":"特殊风险保险", "pid": 2, "code":"2C00000", "level":2},
+        {"id":19, "title":"其他", "pid": 2, "code":"2D00000", "level":2},
+
+        {"id":20, "title":"定期寿险", "pid": 3, "code":"1110000", "level":3},
+        {"id":21, "title":"终身寿险", "pid": 3, "code":"1120000", "level":3},
+        {"id":22, "title":"两全保险", "pid": 3, "code":"1130000", "level":3},
+
+        {"id":23, "title":"一般年金保险", "pid": 4, "code":"1210000", "level":3},
+        {"id":24, "title":"养老年金保险", "pid": 4, "code":"1220000", "level":3},
+
+        {"id":25, "title":"疾病保险", "pid": 5, "code":"1310000", "level":3},
+        {"id":26, "title":"医疗保险", "pid": 5, "code":"1320000", "level":3},
+        {"id":27, "title":"失能收入损失保险", "pid": 5, "code":"1330000", "level":3},
+
+
+        {"id":28, "title":"一般意外伤害保险", "pid": 6, "code":"1410000", "level":3},
+        {"id":29, "title":"交通工具意外伤害保险", "pid": 6, "code":"1420000", "level":3},
+
+        {"id":30, "title":"雇主责任保险", "pid": 14, "code":"2810000", "level":3},
+        {"id":31, "title":"公众责任保险", "pid": 14, "code":"2820000", "level":3},
+        {"id":32, "title":"产品责任险", "pid": 14, "code":"2830000", "level":3},
+        {"id":33, "title":"第三者责任险", "pid": 14, "code":"2840000", "level":3},
+        {"id":34, "title":"职业责任险", "pid": 14, "code":"2850000", "level":3},
+
+        {"id":35, "title":"疾病身故定期寿险", "pid": 20, "code":"1111000", "level":4},
+        {"id":36, "title":"意外身故定期寿险", "pid": 20, "code":"1112000", "level":4},
+        {"id":37, "title":"一般定期寿险", "pid": 20, "code":"1113000", "level":4},
+
+        {"id":38, "title":"重大疾病保险", "pid": 25, "code":"1311000", "level":4},
+        {"id":39, "title":"特定疾病保险", "pid": 25, "code":"1312000", "level":4},
+
+        {"id":40, "title":"费用补偿医疗保险", "pid": 26, "code":"1321000", "level":4},
+        {"id":41, "title":"定额给付医疗保险", "pid": 26, "code":"1322000", "level":4},
+
+        {"id":42, "title":"综合医疗保险", "pid": 40, "code":"1321100", "level":5},
+        {"id":43, "title":"补充医疗保险", "pid": 40, "code":"1321200", "level":5},
+        {"id":44, "title":"意外伤害医疗保险", "pid": 40, "code":"1321300", "level":5},
+        {"id":45, "title":"公共交通意外伤害医疗", "pid": 40, "code":"1321400", "level":5},
+        {"id":46, "title":"急性病医疗保险", "pid": 40, "code":"1321500", "level":5},
+        {"id":47, "title":"女性生育保险", "pid": 40, "code":"1321600", "level":5},
+        {"id":48, "title":"子女医疗保险", "pid": 40, "code":"1321700", "level":5},
+        {"id":49, "title":"中高端医疗保险", "pid": 40, "code":"1321800", "level":5},
+
+        {"id":50, "title":"一般住院津贴", "pid": 41, "code":"1322100", "level":5},
+        {"id":51, "title":"意外住院津贴", "pid": 41, "code":"1322200", "level":5},
+        {"id":52, "title":"公共交通意外住院津贴", "pid": 41, "code":"1322300", "level":5},
+
+        {"id":53, "title":"门诊+住院", "pid": 42, "code":"1321110", "level":6},
+        {"id":54, "title":"门诊", "pid": 42, "code":"1321120", "level":6},
+        {"id":55, "title":"住院", "pid": 42, "code":"1321130", "level":6},
+
+        {"id":56, "title":"门诊+住院", "pid": 43, "code":"1321210", "level":6},
+        {"id":57, "title":"门诊", "pid": 43, "code":"1321220", "level":6},
+        {"id":58, "title":"住院", "pid": 43, "code":"1321230", "level":6},
+
+        {"id":59, "title":"航空意外", "pid": 45, "code":"1321410", "level":6},
+        {"id":60, "title":"轨道交通意外", "pid": 45, "code":"1321420", "level":6},
+        {"id":61, "title":"轮船意外", "pid": 45, "code":"1321430", "level":6},
+        {"id":62, "title":"营运车辆意外", "pid": 45, "code":"1321440", "level":6},
+        {"id":63, "title":"自驾车意外", "pid": 45, "code":"1321450", "level":6},
+
+        {"id":64, "title":"航空意外", "pid": 52, "code":"1322310", "level":6},
+        {"id":65, "title":"轨道交通意外", "pid": 52, "code":"1322320", "level":6},
+        {"id":66, "title":"轮船意外", "pid": 52, "code":"1322330", "level":6},
+        {"id":67, "title":"营运车辆意外", "pid": 52, "code":"1322340", "level":6},
+        {"id":68, "title":"自驾车意外", "pid": 52, "code":"1322350", "level":6},
+
+        {"id":69, "title":"航空意外", "pid": 29, "code":"1420010", "level":6},
+        {"id":70, "title":"轨道交通意外", "pid": 29, "code":"1420020", "level":6},
+        {"id":71, "title":"轮船意外", "pid": 29, "code":"1420030", "level":6},
+        {"id":72, "title":"营运车辆意外", "pid": 29, "code":"1420040", "level":6},
+        {"id":73, "title":"自驾车意外", "pid": 29, "code":"1420050", "level":6},
+
+        {"id":74, "title":"中暑身故", "pid": 35, "code":"1420050", "level":7},
+        {"id":75, "title":"食物中毒身故", "pid": 35, "code":"1420050", "level":7},
+        {"id":76, "title":"猝死", "pid": 35, "code":"1420050", "level":7},
+
+        {"id":77, "title":"地铁意外医疗", "pid": 60, "code":"1420050", "level":7},
+
+        {"id":78, "title":"中暑医疗", "pid": 46, "code":"1420050", "level":7}
+    ];
+    var MAX_LEVEL = 7; // to define the maximum level of the select group
+
+    // to group source data by level
+    function groupDataByLevel(sourceData){
+        var count = sourceData.length;
+        var groupedTypeData  = [];
+        for(var i = 0; i<count; i ++){
+            if(groupedTypeData[sourceData[i].level] == undefined){
+                groupedTypeData[sourceData[i].level] = [];
+            }
+            groupedTypeData[sourceData[i].level].push(sourceData[i]);
+        }
+        return groupedTypeData;
+    }
+
+    // to get sub select source data by parent id
+    function getSubDataBySelectId(parentId, sourceData){
+        var parentIdData = [];
+        if(parentId>0){
+            var sourceCount = sourceData.length;
+            for(var i = parentId; i < sourceCount; i++){
+                if(sourceData[i].pid == parentId){
+                    parentIdData.push(sourceData[i]);
+                }
+            }
+        }
+        return parentIdData;
+    }
+
+    // to set current select's content
+    function setSelectContent(obj, typeData){
+        var toAddOptions = "<option value='-1'>请选择</option>";
+        for(var i = 0; i < typeData.length; i++){
+            toAddOptions += "<option value='"+typeData[i].id+"' data-code='"+typeData[i].code+"'>"+typeData[i].title+"</option>";
+        }
+        obj.html(toAddOptions);
+    }
+
+
+    //this is the main function
+    //use recusion to set current select and register it's change event.
+    //in it's change event, it will trigger this function again to set it's child select obj's content and change event
+    function setSelectAndSubObjAndEvent(obj,typeData){
+        setSelectContent(obj, typeData);
+        var currentLevel = typeData[0].level;
+        if(!obj.onchange){
+            obj.on('change',function() {
+                var id = $(this).val();
+                var subTypeData = getSubDataBySelectId(id, insurance_type_source);
+                if (subTypeData.length > 0) {
+                    var subLevel = subTypeData[0].level;
+                    setSelectAndSubObjAndEvent($('#s' + subLevel), subTypeData);
+                }else{
+                    for(var i = currentLevel + 1; i <= MAX_LEVEL; i++){
+                        setSelectContent($('#s' + i), []);
+                    }
+                }
+            });
+        }
+    }
+
+    // initialize function
+    function initializeProductSelect(sourceData){
+        var groupedData = groupDataByLevel(sourceData);
+        setSelectAndSubObjAndEvent($('#s1'),groupedData[1]);
+    }
+
+    // call initialize function with source data
+    initializeProductSelect(insurance_type_source);
+
+</script>

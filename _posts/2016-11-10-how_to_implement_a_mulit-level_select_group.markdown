@@ -158,3 +158,4 @@ initializeProductSelect(insurance_type_source);
 
 ```
 Actually, you can also read the maximum level from the soure data, and then you can write the infinity select level group according to the soure data!
+[Click here to see the demo ](../../../../2016/11/10/multi-level_select_group_demo.html)
